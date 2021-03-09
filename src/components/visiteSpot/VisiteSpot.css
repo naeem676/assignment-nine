@@ -1,0 +1,62 @@
+
+.main-menu{
+    display: flex;
+   
+    
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 400px;
+    margin-top: 50px;
+  
+
+
+}
+.booking{
+    color: white;
+}
+.sajek{
+    background-image: url("../../Image/Sajek.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    margin-right: 80px;
+    width: 60%;
+    
+    
+}
+.sajek:hover{
+    cursor: pointer;
+    transform: translateY(-20px);
+    padding: 5px;
+    
+
+
+}
+.sreemangal{
+    background-image: url("../../Image/Sreemongol.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 80px;
+    width: 60%;
+    
+    
+}
+.sreemangal:hover{
+    cursor: pointer;
+    transform: translateY(-20px);
+    padding: 5px;
+}
+.sundarbans{
+    background-image: url("../../Image/sundorbon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 80px;
+    width: 60%;
+    
+}
+.sundarbans:hover{
+    cursor: pointer;
+    transform: translateY(-20px);
+    padding: 5px;
+}
