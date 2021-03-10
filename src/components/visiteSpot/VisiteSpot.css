@@ -60,3 +60,109 @@
     transform: translateY(-20px);
     padding: 5px;
 }
+
+form {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+  
+  .form {
+    
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  button[type="button"] {
+    background: black;
+    border: 1px solid white;
+  }
+  
+  
+  
+ 
+  
+  input {
+    display: block;
+    box-sizing: border-box;
+    
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    margin-bottom: 13px;
+    margin-top: 20px;
+   
+    font-size: 14px;
+    font-weight: 200;
+  }
+  
+ 
+  input[type="submit"] {
+    background: #ec5990;
+    
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+  
+  }
+  input[name="origin"]{
+      width: 100%;
+  }
+  input[name="destination"]{
+    width: 100%;
+}
+  input[type="date"]{
+      width: 90%;
+      
+      
+  }
+  .date{
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  
+  input[type="submit"]:hover {
+    background: #bf1650;
+  }
+  
+  input[type="button"]:active,
+  input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+  
+  input:disabled {
+    opacity: 0.4;
+  }
+  
+  input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+  
+  input[type="button"],
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+  
+  .App {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  form {
+    margin-bottom: 400px;
+    margin-right: 200px;
+    background-color: white;
+    padding: 30px;
+  }
