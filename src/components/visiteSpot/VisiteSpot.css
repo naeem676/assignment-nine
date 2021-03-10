@@ -78,6 +78,23 @@ form {
     background: black;
     border: 1px solid white;
   }
+  .book-btn{
+    margin-top: 20px;
+    padding: 15px;
+    background-color: goldenrod;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    
+  }
+  .book-btn:hover{
+    background-color: rgb(172, 124, 5);
+    border: none;
+  }
+  .book-btn:active{
+    border: none;
+  }
   
   
   
@@ -131,7 +148,7 @@ form {
   
   
   input[type="submit"]:hover {
-    background: #bf1650;
+    background: #a82151;
   }
   
   input[type="button"]:active,
@@ -161,7 +178,7 @@ form {
   }
   
   form {
-    margin-bottom: 400px;
+    margin-bottom: 00px;
     margin-right: 200px;
     background-color: white;
     padding: 30px;
