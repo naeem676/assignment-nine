@@ -1,0 +1,17 @@
+.frm{
+    margin: 100px 500px;
+}
+.input-style{
+    width: 100%;
+    background-color: rgb(122, 91, 11);
+    color: white;
+    border: goldenrod;
+    
+}
+input[type="submit"]{
+    background-color: goldenrod;
+}
+input[type="submit"]:hover{
+    background-color: rgb(95, 69, 2);
+    cursor: pointer;
+}
