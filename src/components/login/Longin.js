@@ -67,7 +67,7 @@ const Longin = () => {
             const newUserInfo = {...user};
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
-            console.log(newUserInfo)
+            
 
         }
         
@@ -102,7 +102,7 @@ const Longin = () => {
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setUser(newUserInfo)
-                    console.log(res)
+                    
                     
 
                    
@@ -143,6 +143,94 @@ const Longin = () => {
          e.preventDefault()
     }
 
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    const googleHandle = ()=>{
+
+                    firebase.auth()
+            .signInWithPopup(googleProvider)
+            .then((result) => {
+                /** @type {firebase.auth.OAuthCredential} */
+               
+                
+                 const newUserInfo = {...user};
+                    
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setUser(newUserInfo)
+                    setLoggInUser(result.user);
+               
+                
+            }).catch((error) => {
+              const newUserInfo = {...user}
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setUser(newUserInfo);
+                    setLoggInUser(error);
+              
+              
+                
+              
+                
+            });
+           
+
+            
+
+    }
+
+    
+
+    const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+    const facebookHandle = () => {
+      firebase
+      .auth()
+      .signInWithPopup(facebookProvider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        
+        const newUserInfo = {...user};
+                    
+        newUserInfo.error = '';
+        newUserInfo.success = true;
+        setUser(newUserInfo)
+        setLoggInUser(result.user);
+
+        
+      })
+      .catch((error) => {
+        
+        const newUserInfo = {...user}
+        newUserInfo.error = error.message;
+        newUserInfo.success = false;
+        setUser(newUserInfo);
+        setLoggInUser(error)
+      });
+      
+
+    }
+    console.log(loggInUser)
+
+    
+
+   
+    
+      
+
+      const facebookOut = () => {
+        // firebase.auth().signOut().then(() => {
+        //     setUser({})
+        //     setLoggInUser([]);
+            
+        //   }).catch((error) => {
+        //     // An error happened.
+        //   });
+          
+      }
+
+
+    
+
 
     
   
@@ -158,6 +246,14 @@ const Longin = () => {
                 {user.error}
                 { user.success && <p style={{color:'green'}}>User {newUser ? "created" : "logged" } successfully</p>}
             </form>
+
+
+            <button onClick={googleHandle}>Google Sign in</button>
+             <button onClick={facebookHandle}>Facebook Sign in</button>
+             <button onClick={facebookOut}>Facebook Sign out</button>
+
+            
+            
         </div>
     );
 };

@@ -10,14 +10,14 @@ import Home from './components/home/Home';
 import NoMatch from './components/nomatch/NoMatch';
 import { createContext, useState } from 'react';
 import Longin from './components/login/Longin';
-export const LocationContext = createContext({});
+export const DestinationContext = createContext({});
 export const UserContext = createContext([]);
 
 function App() {
-  const [location, setLocation] = useState({});
+  const [destination, setDestination] = useState({});
   const [loggInUser, setLoggInUser]= useState([]);
   return (
-    <LocationContext.Provider value={[location, setLocation]}>
+    <DestinationContext.Provider value={[destination, setDestination]}>
     <UserContext.Provider value={[loggInUser, setLoggInUser]}>
     <Router>
       <Switch>
@@ -37,7 +37,7 @@ function App() {
     </Router>
     </UserContext.Provider>
     
-    </LocationContext.Provider>
+    </DestinationContext.Provider>
   );
 }
 
