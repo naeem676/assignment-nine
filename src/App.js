@@ -10,6 +10,8 @@ import Home from './components/home/Home';
 import NoMatch from './components/nomatch/NoMatch';
 import { createContext, useState } from 'react';
 import Longin from './components/login/Longin';
+import HotelMenu from './components/hotelMenu/HotelMenu';
+import PrivateRoute from './components/privateRouter/PrivateRoute';
 export const DestinationContext = createContext({});
 export const UserContext = createContext([]);
 
@@ -29,6 +31,15 @@ function App() {
         </Route>
         <Route path='/login'>
         <Longin></Longin>
+        </Route>
+       
+        {/* <PrivateRoute path='/menu'>
+        <HotelMenu></HotelMenu>
+
+        </PrivateRoute> */}
+        <Route path='/menu'>
+        <HotelMenu></HotelMenu>
+
         </Route>
         <Route path='*'>
         <NoMatch></NoMatch>

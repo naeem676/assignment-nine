@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { DestinationContext } from '../../App';
 import './VisiteSpot.css'
 
 
@@ -10,6 +12,8 @@ const VisiteSpot = () => {
     const [menu, setMenu] = useState(true);
     const [book, setBook] = useState(false);
     const [button, setButton]= useState(true);
+    const [destination, setDestination] = useContext(DestinationContext);
+    
 
     const sajakOver = () => {
         setSajek(true);
@@ -55,9 +59,11 @@ const handleSundor = () => {
 
 
 }
+const history = useHistory();
 const { register, handleSubmit} = useForm();
 const onSubmit = data =>{
-    console.log(data);
+    history.push('/menu')
+    setDestination(data);
 }
 
    

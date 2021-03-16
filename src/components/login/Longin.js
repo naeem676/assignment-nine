@@ -5,15 +5,13 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { firebaseConfig } from '../firebaseConfig/firebaseConfig';
 import { UserContext } from '../../App';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 
 if(firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   }
-
-
-
 
 
 const Longin = () => {
@@ -28,19 +26,21 @@ const Longin = () => {
         success:false
     });
 
+    const history = useHistory();
+    const location = useLocation();
+   
+  
+    const { from } = location.state || { from: { pathname: "/" } };
+
     
 
     const handleBlur = (e) => {
-        
-        
-
+ 
         let fieldValidation = true;
         
         if (e.target.name === "email") {
             fieldValidation = /\S+@\S+\.\S+/.test(e.target.value);
-            
-            
-            
+      
         }
         if (e.target.name === "password") {
             fieldValidation = /^(?=.*\d)[a-zA-Z0-9]{7,}$/.test(e.target.value);
@@ -48,8 +48,7 @@ const Longin = () => {
         }
         if (e.target.name === "name") {
             fieldValidation = e.target.value;
-            
-
+ 
             
         }
         
@@ -67,24 +66,14 @@ const Longin = () => {
             const newUserInfo = {...user};
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
-            
-
+        
         }
-        
-        
-        
-      
-       
+    
     }
     
-   
-
+ 
     const handleSubmit= (e)=> {
 
-        
-       
-
-        
         if(newUser && user.email && user.password){
             if(user.password !== user.confirm){
                 alert("The passwords doesn't match")
@@ -102,9 +91,8 @@ const Longin = () => {
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setUser(newUserInfo)
-                    
-                    
-
+                    history.replace(from);
+            
                    
                 })
                 .catch((error) => {
@@ -112,9 +100,7 @@ const Longin = () => {
                     newUserInfo.error = error.message;
                     newUserInfo.success = false;
                     setUser(newUserInfo)
-                    console.log(error)
-                   
-                   
+    
                 });
         }
         if(user.email && user.password){
@@ -128,6 +114,7 @@ const Longin = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo)
                     setLoggInUser(newUserInfo);
+                    history.replace(from);
                    
                 })
                 .catch((error) => {
@@ -138,43 +125,28 @@ const Longin = () => {
                     setLoggInUser(newUserInfo);
                 });
         }
-        
-       
+      
          e.preventDefault()
     }
 
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const googleHandle = ()=>{
 
-                    firebase.auth()
+            firebase.auth()
             .signInWithPopup(googleProvider)
             .then((result) => {
                 /** @type {firebase.auth.OAuthCredential} */
-               
-                
-                 const newUserInfo = {...user};
-                    
-                    newUserInfo.error = '';
-                    newUserInfo.success = true;
-                    setUser(newUserInfo)
+     
                     setLoggInUser(result.user);
+                    history.replace(from);
                
                 
             }).catch((error) => {
-              const newUserInfo = {...user}
-                    newUserInfo.error = error.message;
-                    newUserInfo.success = false;
-                    setUser(newUserInfo);
+           
                     setLoggInUser(error);
               
-              
-                
-              
-                
+ 
             });
-           
-
-            
 
     }
 
@@ -189,50 +161,24 @@ const Longin = () => {
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         
-        const newUserInfo = {...user};
-                    
-        newUserInfo.error = '';
-        newUserInfo.success = true;
-        setUser(newUserInfo)
+        
         setLoggInUser(result.user);
+        history.replace(from);
 
         
       })
       .catch((error) => {
-        
-        const newUserInfo = {...user}
-        newUserInfo.error = error.message;
-        newUserInfo.success = false;
-        setUser(newUserInfo);
-        setLoggInUser(error)
+ 
+        setLoggInUser(error);
+  
       });
+      
       
 
     }
-    console.log(loggInUser)
+    console.log(loggInUser.email)
 
-    
-
-   
-    
-      
-
-      const facebookOut = () => {
-        // firebase.auth().signOut().then(() => {
-        //     setUser({})
-        //     setLoggInUser([]);
-            
-        //   }).catch((error) => {
-        //     // An error happened.
-        //   });
-          
-      }
-
-
-    
-
-
-    
+  
   
     return (
         <div>
@@ -248,11 +194,14 @@ const Longin = () => {
             </form>
 
 
-            <button onClick={googleHandle}>Google Sign in</button>
-             <button onClick={facebookHandle}>Facebook Sign in</button>
-             <button onClick={facebookOut}>Facebook Sign out</button>
+            <div>
+            <button onClick={googleHandle}>Google Sign in</button> <br/>
+            <button onClick={facebookHandle}>Facebook Sign in</button>
+             
 
-            
+            </div>
+
+
             
         </div>
     );
