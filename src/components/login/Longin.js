@@ -6,6 +6,8 @@ import "firebase/auth";
 import { firebaseConfig } from '../firebaseConfig/firebaseConfig';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import google from "../../Icon/google.png";
+import facebook from "../../Icon/fb.png";
 
 
 
@@ -189,14 +191,18 @@ const Longin = () => {
                 { newUser && <input className='input-style' onBlur={handleBlur} type="password" name="confirm" id="Confirm" placeholder='Confirm Password' required/>}
                 <input type="submit" value={newUser ? "Sign up" : "Sign in"}/>
                 {newUser ? <p>Already have an account? <Link component="button" variant="body2" onClick={()=> setNewUser(false)}>  Sign in </Link></p> : <p>Create a new account? <Link component="button" variant="body2" onClick={()=> setNewUser(true)}> Sign up </Link></p>}
-                {user.error}
-                { user.success && <p style={{color:'green'}}>User {newUser ? "created" : "logged" } successfully</p>}
+               
             </form>
-
+        
+            <div className='underline'>
+                <div className='under'> <hr/></div>
+                <div className='or'>Or</div>
+                <div className='line'> <hr/></div>
+            </div>
 
             <div>
-            <button onClick={googleHandle}>Google Sign in</button> <br/>
-            <button onClick={facebookHandle}>Facebook Sign in</button>
+            <button className='google' onClick={googleHandle}><img className='google-img' src={google} alt="" srcset=""/> Google Sign in</button> <br/>
+            <button className='facebook' onClick={facebookHandle}><img className='facebook-img' src={facebook} alt="" srcset=""/> Facebook Sign in</button>
              
 
             </div>

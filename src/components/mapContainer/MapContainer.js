@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const MapContainer = (props) => {
-
+    
     const mapStyles = {
         width: '45%',
         height: '120%',
@@ -12,14 +12,16 @@ const MapContainer = (props) => {
         <div>
              <Map
                 google={props.google}
-                zoom={4}
+                zoom={8}
                 style={mapStyles}
-                initialCenter={{ lat: 47.444, lng: -122.176}}
+                initialCenter={{lat:23.381993, lng: 92.293823}}
                 >
-                <Marker position={{ lat: 48.00, lng: -122.00}} />
+                <Marker position={{lat:23.381993, lng: 92.293823}} />
                 </Map>
         </div>
     );
 };
 
-export default GoogleApiWrapper({apiKey:''}) (MapContainer);
+export default GoogleApiWrapper ({apiKey:""}) (MapContainer);
+
+// AIzaSyCHe40JCe48WLYzrbMA3BbZfbB9WeI11RA

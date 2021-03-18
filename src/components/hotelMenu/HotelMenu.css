@@ -23,6 +23,9 @@
     justify-content: left;
     
 }
+.bed-area:hover{
+    border:1px solid goldenrod;
+}
 .logo{
     width: 10%;
     height: 10%;

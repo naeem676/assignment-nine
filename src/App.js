@@ -33,14 +33,10 @@ function App() {
         <Longin></Longin>
         </Route>
        
-        {/* <PrivateRoute path='/menu'>
+        <PrivateRoute path='/menu'>
         <HotelMenu></HotelMenu>
 
-        </PrivateRoute> */}
-        <Route path='/menu'>
-        <HotelMenu></HotelMenu>
-
-        </Route>
+        </PrivateRoute>
         <Route path='*'>
         <NoMatch></NoMatch>
         </Route>

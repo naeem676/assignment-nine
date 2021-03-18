@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import first from "../../Image/Rectangle 26.png";
 import second from "../../Image/Rectangle 27.png";
 import third from "../../Image/Rectangle 28.png";
@@ -7,8 +7,9 @@ import './HotelMenu.css';
 import logo from "../../Logo.png";
 import MapContainer from '../mapContainer/MapContainer';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { DestinationContext, UserContext } from '../../App';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +22,13 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 const HotelMenu = () => {
+    const [loggInUser, setLoggInUser] = useContext(UserContext);
+    const [destination, setDestination] = useContext(DestinationContext);
+    
     const classes = useStyles();
+   
+    
+    
     return (
         <div>
         
@@ -33,9 +40,13 @@ const HotelMenu = () => {
                     <p>Destination</p>
                     <p>Blog</p>
                     <p>Contact</p>
+                    <p>{loggInUser.email}</p>
                     
                     </nav>
 
+                    </div>
+                    <div>
+                        <h1>Stay in {destination.destination}</h1>
                     </div>
             <div className={classes.root}>
             <Grid container spacing={3}>

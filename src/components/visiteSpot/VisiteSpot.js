@@ -31,13 +31,7 @@ const VisiteSpot = () => {
         setSajek(false)
     }
 
-   const handleBooking = () => {
-       setMenu(false)
-       setBook(true);
-       setButton(false)
-
-
-   }
+  
    const handleSajek = () => {
     setMenu(false)
     setBook(true);
@@ -74,19 +68,19 @@ const onSubmit = data =>{
            <div className='booking'>
             {sajek && <div>
                 <h1>Sajek</h1>
-                <small>(Bengali: সাজেক উপত্যকা) is an emerging tourist spot in Bangladesh situated <br/> among the hills of the Kasalong range of mountains in Sajek union,<br/> Baghaichhari Upazila in Rangamati District.[3] The valley is 1,476 feet (450 m) <br/> above sea level.[4] Sajek valley is known as the Queen of Hills & Roof of Rangamati</small>
-                
+                <small>(Bengali: সাজেক উপত্যকা) is an emerging tourist spot in Bangladesh situated <br/> among the hills of the Kasalong range of mountains in Sajek union,<br/> Baghaichhari Upazila in Rangamati District.[3] The valley is 1,476 feet (450 m) <br/> above sea level.[4] Sajek valley is known as the Queen of Hills & Roof of Rangamati</small><br/>
+                {button && <button onClick={handleSajek} className='book-btn'>Booking</button>}
             </div> }
             {sreemangal && <div>
                 <h1>Sreemangal</h1>
-                <small>Sreemangal is located at 24.3083°N 91.7333°E. <br/> It has 43,952 households and total area 450.74 km2. <br/> It is bordered by Moulvibazar Sadar to the north, Tripura to the south,<br/> Kamalganj to the east and Chunarughat, Nabiganj and Bahubal to the west</small>
-                
+                <small>Sreemangal is located at 24.3083°N 91.7333°E. <br/> It has 43,952 households and total area 450.74 km2. <br/> It is bordered by Moulvibazar Sadar to the north, Tripura to the south,<br/> Kamalganj to the east and Chunarughat, Nabiganj and Bahubal to the west</small><br/>
+                {button && <button onClick={handleSajek} className='book-btn'>Booking</button>}
             </div>}
             {sundor && <div><h1>Sundorbans</h1>
-            <small>The Bengali name Sundarban Bengali: সুন্দরবন means beautiful forest. <br/>[11][12] It may have been derived from the word Sundari or Sundri, <br/> the local name of the mangrove species Heritiera fomes. Alternatively,<br/> it has been proposed that the name is a corruption of Samudraban, Shomudrobôn (Sea Forest),<br/> or Chandra-bandhe, the name of a tribe</small>
-            
+            <small>The Bengali name Sundarban Bengali: সুন্দরবন means beautiful forest. <br/>[11][12] It may have been derived from the word Sundari or Sundri, <br/> the local name of the mangrove species Heritiera fomes. Alternatively,<br/> it has been proposed that the name is a corruption of Samudraban, Shomudrobôn (Sea Forest),<br/> or Chandra-bandhe, the name of a tribe</small><br/>
+            {button && <button onClick={handleSajek} className='book-btn'>Booking</button>}
             </div>}
-           { button && <button onClick={handleBooking} className='book-btn'>Booking</button>}
+           
             
 
             </div>
@@ -110,9 +104,11 @@ const onSubmit = data =>{
     {   book && <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                 <label>Origin</label>
-                <input name="origin" ref={register} required />
+                <input name="origin" value="Chittagong" ref={register} required />
                 <label>Destination</label>
-                <input name="destination" ref={register} required/>
+                {sajek &&<input name="destination" value="Sajek" ref={register} required/>}
+                {sreemangal &&<input name="destination" value="Sreemangal" ref={register} required/>}
+                {sundor &&<input name="destination" value="Shundorban" ref={register} required/>}
                 <div className='date'>
                 <div>
                 <label>From</label>
