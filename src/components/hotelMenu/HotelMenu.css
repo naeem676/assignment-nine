@@ -34,7 +34,6 @@
 }
 nav{
     display: flex;
-    
     color: black;
     
 }
@@ -48,4 +47,9 @@ nav{
 .location{
     margin: 10px;
     width: 20%;
+}
+.log-out{
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }

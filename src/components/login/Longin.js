@@ -20,7 +20,7 @@ const Longin = () => {
     const [newUser, setNewUser] = useState(false);
     const [loggInUser, setLoggInUser] = useContext(UserContext);
     const [user, setUser] = useState({
-        name:'',
+        name: '',
         email:'',
         password:'',
         confirm: '',
@@ -92,10 +92,10 @@ const Longin = () => {
                     
                     newUserInfo.error = '';
                     newUserInfo.success = true;
-                    setUser(newUserInfo)
-                    history.replace(from);
-            
-                   
+                    setUser(newUserInfo);
+                    updateName(user.name);
+                    
+   
                 })
                 .catch((error) => {
                     const newUserInfo = {...user}
@@ -107,7 +107,7 @@ const Longin = () => {
         }
         if(user.email && user.password){
             firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-                .then((userCredential) => {
+                .then((res) => {
                     
                     
                     const newUserInfo = {...user};
@@ -117,6 +117,7 @@ const Longin = () => {
                     setUser(newUserInfo)
                     setLoggInUser(newUserInfo);
                     history.replace(from);
+                    console.log(res.user)
                    
                 })
                 .catch((error) => {
@@ -178,14 +179,25 @@ const Longin = () => {
       
 
     }
-    console.log(loggInUser.email)
+    const updateName =(name)=>{
+        var user = firebase.auth().currentUser;
+
+        user.updateProfile({
+        displayName:name
+        }).then(function() {
+        }).catch(function(error) {
+        // An error happened.
+        });
+
+    }
+    
 
   
   
     return (
         <div>
             <form className='frm' onSubmit={handleSubmit}>
-                {newUser && <input className='input-style' onBlur={handleBlur} type="text" name="name" id="Name" placeholder='Name'/>}
+                {newUser && <input className='input-style' onBlur={handleBlur} type="text" name="name" id="Name" placeholder='Name' required/>}
                 <input className='input-style' onBlur={handleBlur} type="email" name="email" id="Email" placeholder='Email' required />
                 <input className='input-style' onBlur={handleBlur} type="password" name="password" id="Password" placeholder='Password' required />
                 { newUser && <input className='input-style' onBlur={handleBlur} type="password" name="confirm" id="Confirm" placeholder='Confirm Password' required/>}

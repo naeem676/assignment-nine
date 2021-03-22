@@ -9,6 +9,14 @@ import MapContainer from '../mapContainer/MapContainer';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { DestinationContext, UserContext } from '../../App';
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useHistory } from 'react-router-dom';
+import { firebaseConfig } from '../firebaseConfig/firebaseConfig';
+
+if(firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+  }
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +34,18 @@ const HotelMenu = () => {
     const [destination, setDestination] = useContext(DestinationContext);
     
     const classes = useStyles();
+    
+    const history = useHistory();
+
+    const logOut = ()=>{
+        firebase.auth().signOut().then(() => {
+            history.push('/home')
+            setLoggInUser([]);
+          }).catch((error) => {
+            setLoggInUser(error);
+          });
+    }
+    console.log(loggInUser)
    
     
     
@@ -38,7 +58,7 @@ const HotelMenu = () => {
                     <img className='logo' src={logo} alt="" srcset=""/>
                     <p>News</p>
                     <p>Destination</p>
-                    <p>Blog</p>
+                    <button className="log-out" onClick={logOut}>Log Out</button>
                     <p>Contact</p>
                     <p>{loggInUser.email}</p>
                     
