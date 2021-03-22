@@ -12,6 +12,7 @@ import { createContext, useState } from 'react';
 import Longin from './components/login/Longin';
 import HotelMenu from './components/hotelMenu/HotelMenu';
 import PrivateRoute from './components/privateRouter/PrivateRoute';
+import Booked from './components/booked/Booked';
 export const DestinationContext = createContext({});
 export const UserContext = createContext([]);
 
@@ -32,10 +33,12 @@ function App() {
         <Route path='/login'>
         <Longin></Longin>
         </Route>
+        <Route path='/booked'>
+        <Booked></Booked>
+        </Route>
        
         <PrivateRoute path='/menu'>
         <HotelMenu></HotelMenu>
-
         </PrivateRoute>
         <Route path='*'>
         <NoMatch></NoMatch>

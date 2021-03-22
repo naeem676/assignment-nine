@@ -94,6 +94,7 @@ const Longin = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo);
                     updateName(user.name);
+                    history.replace(from);
                     
    
                 })
@@ -117,7 +118,6 @@ const Longin = () => {
                     setUser(newUserInfo)
                     setLoggInUser(newUserInfo);
                     history.replace(from);
-                    console.log(res.user)
                    
                 })
                 .catch((error) => {
@@ -185,6 +185,7 @@ const Longin = () => {
         user.updateProfile({
         displayName:name
         }).then(function() {
+
         }).catch(function(error) {
         // An error happened.
         });

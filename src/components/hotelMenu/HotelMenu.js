@@ -45,7 +45,10 @@ const HotelMenu = () => {
             setLoggInUser(error);
           });
     }
-    console.log(loggInUser)
+    const handleBooked = ()=>{
+        history.push('/booked')
+        console.log('booked');
+    }
    
     
     
@@ -72,7 +75,7 @@ const HotelMenu = () => {
             <Grid container spacing={3}>
                 <Grid  item xs={6}>
                 <div>
-                <div className='bed-area'>
+                <div className='bed-area' onClick={handleBooked}>
                     <div> <img className='bed-img' src={first} alt="" srcset=""/> </div>
                     <div>
                     <p>Light bright airy stylish apt & safe paceful stay</p>
@@ -82,7 +85,7 @@ const HotelMenu = () => {
                     <p><img className='star' src={star} alt="" srcset=""/>4.9(20) $34/night $167 total</p>
                     </div>
                 </div>
-                <div className='bed-area'>
+                <div className='bed-area' onClick={handleBooked}>
                 <div> <img className='bed-s' src={second} alt="" srcset=""/> </div>
                     <div>
                     <p>Apartment in Lost panorama</p>
@@ -92,7 +95,7 @@ const HotelMenu = () => {
                     <p><img className='star-s' src={star} alt="" srcset=""/>4.8(10) $52/night $167 total</p>
                     </div>
                 </div>
-                <div className='bed-area'>
+                <div className='bed-area' onClick={handleBooked}>
                 <div> <img className='bed-s' src={third} alt="" srcset=""/> </div>
                     <div>
                     <p>AR Lounge & Pool (r&r + b&b)</p>

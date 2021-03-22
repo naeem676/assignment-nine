@@ -1,0 +1,13 @@
+.welcome{
+    background-color: darkgreen;
+    color: whitesmoke;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 200px;
+}
+.a{
+    text-decoration: none;
+    margin-left: 800px;
+    margin-top: 20px;
+}
